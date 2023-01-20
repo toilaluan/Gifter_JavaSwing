@@ -33,10 +33,22 @@ public class NhanKhauPanel extends javax.swing.JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                selectedRow = table.getSelectedColumn();
+                selectedRow = table.getSelectedRow();
+                System.out.println(selectedRow);
             }
         });
-
+        this.xoaBtn.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+//                System.out.println(selectedRow);
+                int id = (int) table.getValueAt(selectedRow, 0);
+//                System.out.println(id);
+                if (nhanKhauManageController.xoaNhanKhau(id)){
+                    nhanKhauManageController.setDataTable();
+                }
+            }
+        });
     }
 
     /**

@@ -36,4 +36,10 @@ public class NhanKhauService {
         pst.setString(3, gioitinh);
         pst.executeUpdate();
     }
+    public void xoaNhanKhau(int id) throws SQLException, ClassNotFoundException {
+        conn = SQLConnection.getSQLConnection();
+        PreparedStatement pst = conn.prepareStatement("DELETE FROM nhankhau WHERE id = ?");
+        pst.setInt(1, id);
+        pst.executeUpdate();
+    }
 }

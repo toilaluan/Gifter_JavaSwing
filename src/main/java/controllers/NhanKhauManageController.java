@@ -31,11 +31,20 @@ public class NhanKhauManageController {
         initAction();
 //        table.addMouseListener();
     }
-
+    public boolean xoaNhanKhau(int id){
+        try{
+            nhanKhauService.xoaNhanKhau(id);
+            return true;
+        }catch (SQLException e){
+            return false;
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
     private void initAction(){
         setDataTable();
     }
-    private void setDataTable(){
+    public void setDataTable(){
         tableModel = TableModel.setTableNhanKhau(this.nhanKhauModelList, fields);
         table = new JTable(tableModel) {
             @Override
